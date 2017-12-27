@@ -1,0 +1,52 @@
+<h1> Welcome <%= current_user.name %> </h1>
+
+<body>
+	<%= render :template => "/home/nav" %>
+
+<%if(@task.present?) %>
+	<%=form_for(:task, url:tasks_update_path) do |f|%>
+		<div class = "form-group">
+			<%=f.label "Edit/write down what you achieved today"%>
+			<%=f.text_field :what_done, class: "form-control"%>
+		</div>
+	 	<%=f.submit :Submit, class: "btn btn-primary"%>
+	<%end%>
+<%else%>
+	<%=form_for(:task, url: tasks_create_path) do |f| %>
+		
+		<div class = "form-group">
+			<%=f.label "What do you plan to learn today?"%>
+			<%=f.text_field :what_to_do, class: "form-control"%>
+		</div>
+		
+		<%=f.submit :Submit, class: "btn btn-primary"%>
+	<%end%>
+<% end %>
+
+<table class = "table">
+	<tr>
+		<th>
+			Date
+		</th>
+		<th>
+			Plan
+		</th>
+		<th>
+			Accomplishment
+		</th>
+	</tr>
+	<% @tasks.each do |task| %>
+		<tr>
+			<td>
+				<%=task.date%>
+			</td>
+			<td>
+				<%=task.what_to_do%>
+			</td>
+			<td>
+				<%=task.what_done%>
+			</td>
+		</tr>
+	<%end%>
+</table>
+</body>

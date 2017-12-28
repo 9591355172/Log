@@ -31,9 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
-
+gem 'whenever', :require => false
 gem 'jquery-rails'
-
+gem 'figaro'
+gem 'sidekiq'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

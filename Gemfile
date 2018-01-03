@@ -35,6 +35,7 @@ gem 'whenever', :require => false
 gem 'jquery-rails'
 gem 'figaro'
 gem 'sidekiq'
+gem 'petergate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

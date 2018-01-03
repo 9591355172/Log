@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
  
 
-  post  '/tasks/create'
-  post '/tasks/update'
-  devise_for :users, :controllers => { registrations: 'registrations' }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :home  
+get 'home/index'
   resources :tasks
-  root to: "home#index"
-  
+
+resources :team_lead
+  #get 'team_lead/show'
+   
+  devise_for :users, controllers: {
+        # sessions: 'users/sessions',
+        registrations: 'users/registrations'
+      }
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  post '/tasks' => "tasks#create"
+  root 'home#index'
+
+  get '/email' => "home#send_email"
+  get '/insert_checkbox' => 'tasks#set_checkbox'
 end
+
+
+
+ 

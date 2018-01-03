@@ -1,0 +1,57 @@
+<body>
+
+
+	<%= render :template => "/home/nav" %>
+
+	<table class = "table">
+ 	<tr>
+ 		<th>
+ 			Manager Control
+ 		</th>
+ 		<th>
+ 			Date
+ 		</th>
+ 		<th>
+ 			Plan
+ 		</th>
+ 		<th>
+ 			What Achieved
+ 		</th>
+ 	</tr>
+ 	<% @tasks.each do |task| %>
+ 		<tr>
+ 			<td>
+ 				<input type="checkbox" id="checkbox-users-show" onclick="sendCheckRequest(<%=task.id%>)">
+ 			</td>
+ 			<td>
+ 				<%=task.date%>
+ 			</td>
+ 			<td>
+ 				<%=task.what_to_do%>
+ 			</td>
+ 			<td>
+ 				<%=task.what_done%>
+ 			</td>
+ 		</tr>
+ 	<%end%>
+</table>
+
+</body>
+<script type="text/javascript">
+	function sendCheckRequest(taskId){
+		console.log("Logged plan ID "+taskId);
+	$.ajax({
+		url: '../insert_checkbox',
+		type: "GET",
+		data: {'task_id': taskId},
+		dataType: "json",
+		success: function(data){
+			alert("Success");
+		},
+		error: function(data){
+			alert('Failure');
+			console.log(data.responseText);
+		}
+	});
+}
+</script>

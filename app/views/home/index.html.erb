@@ -29,11 +29,11 @@
 
 		<div class = "form-group">
 			<% @tasks_perday.each do |task|%>
-				<%if task.checkbox == false%>  
+				
 					<input type="checkbox" id="checkbox-users-show" onclick="sendCheckRequest(<%=task.id%>)">
 						</font><font color="white"><%=task.what_to_do%><br></font>
 
-				<%end%>
+				
 			<%end%>
 		</div>
 	 	

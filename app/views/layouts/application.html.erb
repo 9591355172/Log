@@ -7,11 +7,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-		<%= yield %>
-  		<p class="notice"><%= notice %></p>
+<%= favicon_link_tag asset_path('http://www.avalonlabs.co/images/avalonlogo.png'), :rel => 'icon', :type =>  'image/png' %>
+  <body align="center">
+		
+    <%= yield %>
+  	   <div class="container col-sm-10" align="right" >
+       <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-    
+       </div>
   </body>
 </html>

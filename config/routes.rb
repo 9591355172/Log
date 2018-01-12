@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
 get 'home/index'
   resources :tasks
-
 resources :team_lead
   #get 'team_lead/show'
    

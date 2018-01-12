@@ -6,7 +6,12 @@ class TeamLeadController < ApplicationController
 	end
 		
 	def show
-		@users = User.find(params[:id])
-		@tasks = @users.tasks
+		@user = User.find(params[:id])
+		if(logged_in?(:manager) && current_user.id != @user.id)
+			redirect_to root_path
+		end
+		@tasks = @user.tasks
+	  	@dates = @tasks.order(:date).group(:date).count
+	  	@tasks_perday = @tasks.where(date: Time.now.strftime("%d/%m/%Y"))
 	end
 end

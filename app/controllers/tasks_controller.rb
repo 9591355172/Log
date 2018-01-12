@@ -9,33 +9,49 @@ class TasksController < ApplicationController
   	end
   	redirect_to root_path
 
-	# if(@task.save)
-	# 	redirect_to root_path
-	# else
-	# 	render plain: "error"
-	# end
+	
   end
 
  
-
-  def update
+  def show
+  	
+  	@task = Task.find(params[:id])
+  	created = @task.created_at
+	updated = @task.updated_at
+	@minutes = ((updated - created)/3600).to_f
+	@minute = @minutes.round(2)
+		# if(logged_in?(:manager) && current_user.id != @user.id)
+		# 	redirect_to root_path
+		# end
+		# @tasks = @user.tasks
+	 #  	@dates = @tasks.order(:date).group(:date).count
+	 #  	@tasks_perday = @tasks.where(date: Time.now.strftime("%d/%m/%Y"))
+  end
+ 
+	def update
 		@task = Task.find(params[:id])
-		if(@task.update!(params.require(:task).permit(:what_done)))
+
+		if(@task.update!(params.require(:task)
+								.permit(:what_done, :what_to_do)
+								.merge(:user_id => current_user.id,
+										:date => Time.now.strftime("%d/%m/%Y"))))
 			redirect_to root_path
 		else
 			render plain: "error"
 		end
 	end
 
+
 	def set_checkbox
+
 		task = Task.find(params[:task_id])
-		if(Department.task.find(task.id))
-			if(plan.checkbox == true)
-				 task.update!(checkbox: false)
+		# if(Department.task.find(task.id))
+			if(task.checkbox == true)
+				 task.update!(checkbox: false,completed: Time.now.strftime("%d/%m/%Y"))
 	    	else
-	    		task.update!(checkbox: true)
+	    		task.update!(checkbox: true, completed: Time.now.strftime("%d/%m/%Y"))
 	    	end
-	    end
+	   
 	end
 		
 	

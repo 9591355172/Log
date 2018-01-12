@@ -2,12 +2,13 @@
     border-radius: 0;
     margin-bottom: 20px;
     
+    
     .navbar-brand {
         font-weight: bolder;
-        
+        font-color: red;
         .light {
             font-weight: 300;
-             
+            font-color: black;
         }
     }
     .navbar-toggler {

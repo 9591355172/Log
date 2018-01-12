@@ -1,8 +1,9 @@
-class CreateTasks < ActiveRecord::Migration[5.1]
+class TasksNew < ActiveRecord::Migration[5.1]
   def change
     create_table :tasks do |t|
     	t.text :user_id
     	t.text :what_to_do
+    	t.text :date
     	t.text :what_done
     	t.boolean :checkbox
       t.timestamps

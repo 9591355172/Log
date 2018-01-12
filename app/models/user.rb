@@ -6,5 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  validates :name, :presence => true
+  # validates :department_id, :presence => true
   has_many :tasks
+  # belongs_to :department
 end

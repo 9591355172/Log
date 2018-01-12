@@ -16,8 +16,21 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-
+require File.expand_path(File.dirname(__FILE__) + "/environment")
 # Learn more: http://github.com/javan/whenever
-every 1.minute do
-	rake 'send_email'
+
+
+usr =User.all
+
+usr.each do |user|
+
+	every :day, :at => user.timings do 
+		rake "send_email[#{user.email}]", :environment => "development"
+	end
+	every :day, :at => user.timings_end do
+		rake "send_email[#{user.email}]", :environment => "development"
+	end
 end
+# every :day, :at => "2:34 pm" do
+# 	rake "save_unfinished_task", :environment => "development"
+# end

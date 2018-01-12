@@ -36,6 +36,8 @@ gem 'jquery-rails'
 gem 'figaro'
 gem 'sidekiq'
 gem 'petergate'
+
+gem 'record_tag_helper', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

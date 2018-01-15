@@ -4,7 +4,8 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 task :send_email, [:email_id] => :environment do |t, args|
   
 
-  HardWorker.perform_async({user.email})
+  HardWorker.perform_async(user.email)
+
   # SendMailMailer.sample_email(args).deliver_now!
   puts "Updating feed..."
   

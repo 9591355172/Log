@@ -24,10 +24,10 @@ usr =User.all
 
 usr.each do |user|
 
-	every :day, :at => user.timings do 
+	every 1.minute do 
 		rake "send_email[#{user.email}]"
 	end
-	every :day, :at => user.timings_end do
+	every 1.minute do
 		rake "send_email[#{user.email}]"
 	end
 end

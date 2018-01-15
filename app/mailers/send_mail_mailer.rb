@@ -2,9 +2,9 @@ class SendMailMailer < ApplicationMailer
 	
 	default from: "girmalruby@gmail.com"
 
-  def sample_email(mail)
+  def sample_email()
     
-       mail(to: mail, subject: 'Log System')
+       mail(to: "abhijeet428001@gmail.com", subject: 'Log System')
     
   end
 end

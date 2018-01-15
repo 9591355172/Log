@@ -21,8 +21,6 @@ a,
   display: flex;
   align-items: center;
   justify-content: center;
-  width: remy(1280px);
-  height: remy(800px);
   border-radius: remy(3px);
   box-shadow: 0px remy(3px) remy(7px) rgba(0,0,0,.25);
 }

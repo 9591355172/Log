@@ -4,11 +4,9 @@ namespace :scheduler do
 
 		task :send_email, [:email_id] => :environment do |t, args|
   			HardWorker.perform_async(User.all.email_id)
-
-  # SendMailMailer.sample_email(args).deliver_now!
-  puts "Updating feed..."
-  
-  puts "done."
+			puts "Updating feed..."
+			puts "done."
+end
 end
 
 # task :send_reminders => :environment do

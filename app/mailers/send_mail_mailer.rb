@@ -4,7 +4,7 @@ class SendMailMailer < ApplicationMailer
 
   def sample_email(mail)
     
-       mail(to: "abhijeet428001@gmail.com", subject: 'Log System')
+       mail(to: mail, subject: 'Log System')
     
   end
 end

@@ -4,7 +4,7 @@ class SendMailMailer < ApplicationMailer
 
   def sample_email(mail)
     
-       mail(to: mail, subject: 'Welcome')
+       mail(to: mail, subject: 'Log System')
     
   end
 end

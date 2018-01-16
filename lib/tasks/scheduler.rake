@@ -4,9 +4,14 @@ namespace :scheduler do
 
 		task :send_email => :environment do 
 			emails = User.pluck(:email)
+			
+   			# timing = @user.timings
+   			
 			emails.each do |mail|
 				puts "Updating feed..."
-  				HardWorker.perform_async(mail)
+				@user = User.where(email: mail).first
+				timing_end = @user.timings_end
+  				HardWorker.perform_at(timings_end, mail)
 				puts "done."
 			end
 

@@ -4,7 +4,7 @@ class HardWorker
 
   def perform(mails)
     # Do something
-    emails = mails.is_a?(Array) ? mails : [mails]
+    emails = Array(mails)
     emails.each do |email|
     	SendMailMailer.sample_email(email).deliver!
     	puts "EMAIL"

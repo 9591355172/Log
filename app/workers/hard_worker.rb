@@ -4,8 +4,7 @@ class HardWorker
 
   def perform(mail)
     # Do something
-   		@users = User.all
-   		@user = @users.where(email: mail)
+   		@user = User.where(email: mail).first
    		# timing = @user.timings
    		timing_end = @user.timings_end
     	# SendMailMailer.sample_email(mail).deliver_at(timing)

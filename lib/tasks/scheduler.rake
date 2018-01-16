@@ -11,7 +11,7 @@ namespace :scheduler do
 				puts "Updating feed..."
 				@user = User.where(email: mail).first
 				timing_end = @user.timings_end
-  				HardWorker.perform_at(timings_end, mail)
+  				HardWorker.perform_at(timing_end, mail)
 				puts "done."
 			end
 

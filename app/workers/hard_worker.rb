@@ -4,11 +4,10 @@ class HardWorker
 
   def perform(mails)
     # Do something
-    emails = Array(mails)
-    emails.each do |email|
-    	SendMailMailer.sample_email(email).deliver!
+   
+    	SendMailMailer.sample_email(mails).deliver!
     	puts "EMAIL"
     	puts email
-    end
+   
   end
 end

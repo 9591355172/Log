@@ -8,7 +8,7 @@ class HardWorker
     	# SendMailMailer.sample_email(mail).deliver!
     	SendMailMailer.sample_email(mail).deliver!
     	puts "EMAIL"
-    	puts email
+    	puts mail
    
   end
 end

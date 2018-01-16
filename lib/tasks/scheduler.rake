@@ -12,7 +12,7 @@ namespace :scheduler do
 				@user = User.where(email: mail).first
 				timing_end = @user.timings_end
 				d = Date.today
-				t = timing_end
+				t = Time.parse(timing_end)
 				dt = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec)
   				SendMailMailer.sample_email(mail).deliver_later(wait_until: dt)
 				puts "done."

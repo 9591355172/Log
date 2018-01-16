@@ -11,7 +11,7 @@ namespace :scheduler do
 				puts "Updating feed..."
 				@user = User.where(email: mail).first
 				timing_end = @user.timings_end
-  				SendMailMailer.sample_email(mail).deliver_now!
+  				SendMailMailer.sample_email(mail).deliver_later(wait_until: timing_end)
 				puts "done."
 			end
 

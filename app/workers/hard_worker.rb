@@ -11,6 +11,6 @@ class HardWorker
     	puts "EMAIL"
     	puts email
 	}
-    
   end
+end
 end

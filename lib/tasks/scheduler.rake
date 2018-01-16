@@ -3,14 +3,14 @@ desc "This task is called by the Heroku scheduler add-on"
 namespace :scheduler do
 
 		task :send_email => :environment do 
-
 			emails = User.pluck(:email)
 
-		emails.each do |mail|
-			puts "Updating feed..."
-  			HardWorker.perform_async(mail)
-			puts "done."
-		end
+			emails.each do |mail|
+				puts "Updating feed..."
+  				HardWorker.perform_async(mail)
+				puts "done."
+			end
+			
 		end
 
 end

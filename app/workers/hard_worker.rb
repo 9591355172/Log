@@ -2,10 +2,10 @@
 class HardWorker
   include Sidekiq::Worker
 
-  def perform(mails)
+  def perform(mail)
     # Do something
    
-    	SendMailMailer.sample_email(mails).deliver!
+    	SendMailMailer.sample_email(mail).deliver!
     	puts "EMAIL"
     	puts email
    

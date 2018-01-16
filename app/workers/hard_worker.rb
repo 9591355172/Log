@@ -2,7 +2,7 @@
 class HardWorker
   include Sidekiq::Worker
 
-  def self.perform(mail)
+  def perform(mail)
     # Do something
    		@users = User.all
    		@user = @users.where(email: mail)

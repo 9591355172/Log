@@ -9,9 +9,8 @@ namespace :scheduler do
    			
 			emails.each do |mail|
 				puts "Updating feed..."
-				@user = User.where(email: mail).first
-				timing_end = @user.timings_end
-  				HardWorker.perform_at(timing_end, mail)
+				
+  				HardWorker.perform_async(mail)
 				puts "done."
 			end
 

@@ -2,7 +2,7 @@ desc "This task is called by the Heroku scheduler add-on"
 # require File.expand_path(File.dirname(__FILE__) + "/environment")
 namespace :scheduler do
 
-		task :send_email, [:email_id] => :environment do |t, args|
+		task :send_email => :environment do |t|
 			emails = User.pluck(:email_id)
   			HardWorker.perform_async(emails)
 			puts "Updating feed..."

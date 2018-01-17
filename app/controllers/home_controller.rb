@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :authenticate_user!, :only => [:index, :send_email]
+	before_action :validate_user, :only => [:index, :send_email]
 	def index
 		if (user_signed_in?)
       		 @user=current_user
@@ -11,19 +11,21 @@ class HomeController < ApplicationController
   		else
   		  redirect_to new_user_session_path
  		 end
- 		 
-		 
-
  	 end
-
-	
-
-	
 
 	  def send_email
   		UserMailer.send_email.deliver_now
   		redirect_to root_path
 	  end
+
+    def validate_user
+    @params_id = params[:id]
+    @user_links = current_user.links
+    unless @user_links.find_by(id: @params_id)
+      flash[:alert] = "You are not allowed to view that page since you are not the user."
+      redirect_to root_path
+    end
+  end
 
 end
 

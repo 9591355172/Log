@@ -1,8 +1,5 @@
 class TasksController < ApplicationController
- 	before_action :authenticate_user!, :only => [:show]
-
-
-
+ 	before_action :validate_user, :only => [:show]
   def create
   	params[:task][:what_to_do].each_line.each do |task|
 			Task.create(what_to_do: task, user_id: current_user.id, date: Time.now.strftime("%d/%m/%Y"))
@@ -52,6 +49,15 @@ class TasksController < ApplicationController
 	    		task.update!(checkbox: true, completed: Time.now.strftime("%d/%m/%Y"))
 	    	end
 	   
+	end
+
+	def validate_user
+		@params_id = params[:id]
+		@user_links = current_user.links
+		unless @user_links.find_by(id: @params_id)
+			flash[:alert] = "You are not allowed to view that page since you are not the user."
+			redirect_to root_path
+		end
 	end
 		
 	

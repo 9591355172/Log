@@ -12,11 +12,16 @@ namespace :scheduler do
 				@user = User.where(email: mail).first
 				timing_end = @user.timings_end
 				d = Date.today
-				t_utc = timing_end
-				t_itc = t_utc.in_time_zone('Asia/Kolkata')
-				t_itc -= t_itc.utc_offset
-				dt = DateTime.new(d.year, d.month, d.day, t_itc.hour, t_itc.min, t_itc.sec, t_itc.zone)
-  				SendMailMailer.sample_email(mail).deliver_later(wait_until: dt)
+				t_end_utc = timing_end
+				t_start_utc = @user.timings
+				t_start_utc = t_start_utc.in_time_zone('Asia/Kolkata')
+				t_end_itc = t_end_utc.in_time_zone('Asia/Kolkata')
+				t_start_itc -= t_start_itc.utc_offset
+				t_end_itc -= t_end_itc.utc_offset
+				dt_end = DateTime.new(d.year, d.month, d.day, t_end_itc.hour, t_end_itc.min, t_end_itc.sec, t_end_itc.zone)
+				dt_start = DateTime.new(d.year, d.month, d.day, t_start_itc.hour, t_start_itc.min, t_start_itc.sec, t_start_itc.zone)
+  				SendMailMailer.sample_email(mail).deliver_later(wait_until: dt_end)
+  				SendMailMailer.sample_email(mail).deliver_later(wait_until: dt_start)
 				puts "done."
 			end
 

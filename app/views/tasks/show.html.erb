@@ -27,10 +27,10 @@
 				<%= @task.what_to_do %><br />
 			</td>
 			<td>
-				<font color="white">(<%= (@task.created_at).localtime.to_date.strftime("%B %d %Y") %></font> at <font color="white"><%= (@task.created_at).localtime.strftime("%I:%M %P") %> )</font><br>
+				<font color="white">(<%= (@task.created_at).to_date.strftime("%B %d %Y") %></font> at <font color="white"><%= (@task.created_at).localtime.strftime("%I:%M %P") %> )</font><br>
 			</td>
 			<td>
-				<font color="white">(<%= (@task.updated_at).localtime.to_date.strftime("%B %d %Y")%></font> at <font color="white"><%= (@task.updated_at).localtime.strftime("%I:%M %P") %> )</font><br>
+				<font color="white">(<%= (@task.updated_at).to_date.strftime("%B %d %Y")%></font> at <font color="white"><%= (@task.updated_at).localtime.strftime("%I:%M %P") %> )</font><br>
 			</td>
 			<td>
 				<%= @minute %> hours

@@ -53,8 +53,8 @@ class TasksController < ApplicationController
 
 	def validate_user
 		@params_id = params[:id]
-		@user_links = current_user.links
-		unless @user_links.find_by(id: @params_id)
+		@user_tasks = current_user.tasks
+		unless @user_tasks.find_by(id: @params_id)
 			flash[:alert] = "You are not allowed to view that page since you are not the user."
 			redirect_to root_path
 		end

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :validate_user, :only => [:index, :send_email]
+	
 	def index
 		if (user_signed_in?)
       		 @user=current_user

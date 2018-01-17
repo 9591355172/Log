@@ -5,7 +5,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-  
+
 </head>
 
 
@@ -89,7 +89,7 @@
 				<%@tasks.where(date: date).each do |task|%> 
 				 
 				 	<font color="white"><%=task.what_to_do%></font></br>
-				    <font color="grey">  </font> <font color="grey" align="center"><%= (task.created_at).strftime("%I:%M %P") %> </font><br>
+				    <font color="grey">  </font> <font color="grey" align="center"><%= (task.created_at).localtime.strftime("%I:%M %P").in_time_zone('Asia/Kolkata') %> </font><br>
 				 
 				<%end%>
 			</td>
